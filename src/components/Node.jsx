@@ -18,10 +18,10 @@ const Node = ({ node, onAdd, onDelete, onUpdate, isRoot }) => {
 
     const getNodeColor = () => {
         switch (node.type) {
-            case NodeTypes.START: return 'var(--start-node-color)';
-            case NodeTypes.ACTION: return 'var(--action-node-color)';
-            case NodeTypes.BRANCH: return 'var(--branch-node-color)';
-            case NodeTypes.END: return 'var(--end-node-color)';
+            case NodeTypes.START: return 'var(--start-node-bg)';
+            case NodeTypes.ACTION: return 'var(--action-node-bg)';
+            case NodeTypes.BRANCH: return 'var(--branch-node-bg)';
+            case NodeTypes.END: return 'var(--end-node-bg)';
             default: return '#fff';
         }
     };
@@ -30,10 +30,9 @@ const Node = ({ node, onAdd, onDelete, onUpdate, isRoot }) => {
         <div className="node-wrapper">
             <div
                 className={`node ${node.type}`}
-                style={{ borderColor: getNodeColor() }}
             >
                 <div className="node-content">
-                    <div className="node-header" style={{ backgroundColor: getNodeColor() }}>
+                    <div className="node-header" style={{ background: getNodeColor() }}>
                         <span className="node-type-label">{node.type.toUpperCase()}</span>
                         {!isRoot && (
                             <button className="delete-btn" onClick={() => onDelete(node.id)}>×</button>
